@@ -5,6 +5,8 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.util.Arrays;
+
 public abstract class Bag {
     /*
      * TODO: Create the following private instance variables
@@ -115,8 +117,11 @@ public abstract class Bag {
      */
 
     public String popItem() {
-        String temp = this.contents[numberOfContents];
-        this.contents[numberOfContents] = null;
+        if (numberOfContents == 0) {
+            return null;
+        }
+        String temp = this.contents[numberOfContents-1];
+        this.contents[numberOfContents-1] = null;
         this.numberOfContents --;
         return temp;
     }
