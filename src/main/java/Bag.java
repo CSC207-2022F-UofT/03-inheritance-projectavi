@@ -14,6 +14,11 @@ public abstract class Bag {
      *       - an array of Strings named contents
      */
 
+    private String color;
+    private int numberOfContents;
+    private int capacity;
+    private String[] contents;
+
 
 
 
@@ -27,6 +32,13 @@ public abstract class Bag {
      * its contents.)
      */
 
+    public Bag(String colour, int capacity) {
+        this.color = colour;
+        this.capacity = capacity;
+        this.numberOfContents = 0;
+        this.contents = new String[this.capacity];
+    }
+
 
 
 
@@ -38,6 +50,18 @@ public abstract class Bag {
      *           - getCapacity
      */
 
+    public String getColor() {
+        return this.color;
+    }
+
+    public int getNumberOfContents() {
+        return this.numberOfContents;
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
+
 
 
 
@@ -45,6 +69,9 @@ public abstract class Bag {
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
+    public void setColor(String colour) {
+        this.color = colour;
+    }
 
 
 
@@ -61,6 +88,17 @@ public abstract class Bag {
      *       and false otherwise.
      */
 
+    public boolean addItem(String item) {
+        if (this.numberOfContents < this.capacity) {
+            this.contents[numberOfContents] = item;
+            this.numberOfContents++;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 
 
 
@@ -76,6 +114,13 @@ public abstract class Bag {
      * @return
      */
 
+    public String popItem() {
+        String temp = this.contents[numberOfContents];
+        this.contents[numberOfContents] = null;
+        this.numberOfContents --;
+        return temp;
+    }
+
 
 
 
@@ -87,7 +132,7 @@ public abstract class Bag {
      */
     public void increaseCapacity(int n) {
         // TODO: Implement this method.
-
+        this.capacity += n;
     }
 
     /**
